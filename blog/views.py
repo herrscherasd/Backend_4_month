@@ -7,3 +7,9 @@ def hello(request):
     """
 
     return HttpResponse("Hello", headers={"Name": "Alex"}, status = 500)
+
+def get_about(request):
+    return HttpResponse("Какая-нибудь строка")
+
+def get_contacts(request):
+    return HttpResponse("Какая-нибудь строка 2")
