@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 # Create your tests here.
 
-class HelloViewTextCase(TestCase):
+class ViewsTextCase(TestCase):
     def setUp(self):
         self.client = Client()
 
@@ -11,21 +11,15 @@ class HelloViewTextCase(TestCase):
         excepted_data = "Hello"
         self.assertEqual(excepted_data, response.content.decode())
         self.assertEqual(500, response.status_code)
-
-class AboutViewTestCase(TestCase):
-    def setUp(self):
-        self.client = Client()
+        self.assertEqual("Alex", response["name"])
 
     def test_about(self):
         response = self.client.get(reverse('about-views'))
-        excepted_data = "Какая-нибудь строка 2"
+        excepted_data = "Какая-нибудь строка"
         self.assertEqual(excepted_data, response.content.decode())
 
-class ContactsViewTestCase(TestCase):
-    def setup(self):
-        self.client = Client()
-    
     def test_contacts(self):
         response = self.client.get(reverse('contacts-views'))
-        excepted_data = 'Какая-нибудь строка'
+        excepted_data = 'Какая-нибудь строка 2'
         self.assertEqual(excepted_data, response.content.decode())
+
