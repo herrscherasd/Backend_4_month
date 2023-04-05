@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Первая вьюха с шаблоном</h1>
+    {#{{ my_list }}#}
+    <ol>
+        {% for item in my_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ol>
+{% endblock %}

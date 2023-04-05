@@ -1,16 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-def hello(request):
-    heading = """<h1> Закголовок 1 lvl</h1>
-    <h2> Загаловок 2 lvl
-    """
-
-    return HttpResponse("Hello", headers={"name": "Alex"}, status = 500)
+def get_index(request):
+    context = {
+        "title" : "Главная страница",
+        "my_list" : [1, 2, 3, 4]
+    }
+    return render(request, "blog/index.html", context=context)
     
 
 def get_about(request):
-    return HttpResponse("Какая-нибудь строка")
+    context = {
+        "title" : "Страница о нас"
+    }
+    return render(request, "blog/about.html", context=None)
 
 def get_contacts(request):
-    return HttpResponse("Какая-нибудь строка 2")
+    context = {
+        "title" : "Как с нами связаться"
+    }
+    return render(request, "blog/contacts.html", context=None)

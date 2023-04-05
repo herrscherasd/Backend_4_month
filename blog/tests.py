@@ -7,7 +7,7 @@ class ViewsTextCase(TestCase):
         self.client = Client()
 
     def test_hello(self):
-        response = self.client.get(reverse("hello-view"))  
+        response = self.client.get(reverse("index-view"))  
         excepted_data = "Hello"
         self.assertEqual(excepted_data, response.content.decode())
         self.assertEqual(500, response.status_code)
