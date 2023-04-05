@@ -6,7 +6,8 @@ def hello(request):
     <h2> Загаловок 2 lvl
     """
 
-    return HttpResponse("Hello", headers={"Name": "Alex"}, status = 500)
+    return HttpResponse("Hello", headers={"name": "Alex"}, status = 500)
+    
 
 def get_about(request):
     return HttpResponse("Какая-нибудь строка")
