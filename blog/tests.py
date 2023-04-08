@@ -7,19 +7,19 @@ class ViewsTextCase(TestCase):
         self.client = Client()
 
     def test_hello(self):
-        response = self.client.get(reverse("index-view"))  
-        excepted_data = "Hello"
-        self.assertEqual(excepted_data, response.content.decode())
-        self.assertEqual(500, response.status_code)
-        self.assertEqual("Alex", response["name"])
+        response = self.client.get(reverse("index-page"))  
+        self.assertTemplateUsed(response, "blog/index.html")
+
+
 
     def test_about(self):
-        response = self.client.get(reverse('about-views'))
-        excepted_data = "Какая-нибудь строка"
-        self.assertEqual(excepted_data, response.content.decode())
+        response = self.client.get(reverse('about-view'))
+        self.assertTemplateUsed(response, "blog/about.html")
+
+
 
     def test_contacts(self):
-        response = self.client.get(reverse('contacts-views'))
-        excepted_data = 'Какая-нибудь строка 2'
-        self.assertEqual(excepted_data, response.content.decode())
+        response = self.client.get(reverse('contacts-view'))
+        self.assertTemplateUsed(response, "blog/contacts.html")
+
 
