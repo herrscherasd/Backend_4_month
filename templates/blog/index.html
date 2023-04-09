@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Первая вьюха с шаблоном</h1>
-    {#{{ my_list }}#}
-    <ol>
-        {% for item in my_list %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ol>
+    <h1>Главная страница</h1>
 
-    <a href="{% url 'about-view' %}">
-        О нас
-    </a>
+    {% for post in posts %}
 
-    <a href="{% url 'contacts-view' %}">
-        Контакты
-    </a>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.created }}</h6>
+                <p class="card-text">{{ post.content|truncatewords:10 }}</p>
+                <a href="{% url 'post-detail' post.id %}" class="card-link">Читать далее</a>
+
+            </div>
+        </div>
+        <br>
+
+    {% endfor %}
+
+
+    <a href="{% url 'about-view' %}">О нас</a>
+    <a href="{% url 'contacts-view' %}">Контакты</a>
 {% endblock %}

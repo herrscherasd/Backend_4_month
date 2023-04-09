@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from blog.models import Post
 
 def get_index(request):
     context = {
@@ -19,3 +20,10 @@ def get_contacts(request):
         "title" : "Как с нами связаться"
     }
     return render(request, "blog/contacts.html", context=None)
+
+def get_post(request, pk):
+    post = Post.objects.get(id=pk)
+    context =  {
+        "post" : post,
+    }
+    return render(request, "blog/post_detail.html", context)
