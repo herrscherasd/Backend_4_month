@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block title %}
+Главная страница
+{% endblock %}
+
 {% block content %}
     <h1>Главная страница</h1>
 
@@ -16,7 +20,7 @@
         <br>
 
     {% endfor %}
-
+    <a href="{% url 'post-create' %}"><button>Создать запись</button></a>
 
     <a href="{% url 'about-view' %}">О нас</a>
     <a href="{% url 'contacts-view' %}">Контакты</a>

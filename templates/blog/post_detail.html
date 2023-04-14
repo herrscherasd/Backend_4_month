@@ -10,6 +10,15 @@
 </div>
     <br>
 
+    <form action="{% url 'post-delete' post.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить запись</button>
+    </form>
+    <br>
+
+    <a href="{% url 'post-update' post.id %}"><button>Обновить запись</button></a>
+    <br>
+
     <a href="{% url 'index-page' %}">На главную</a>
     <a href="{% url 'about-view' %}">О нас</a>
     <a href="{% url 'contacts-view' %}">Контакты</a>
