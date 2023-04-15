@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+Удалить пост
+{% endblock %}
+{% block content %}
+  <p>Вы действительно хотите удалить этот пост?</p>
+  <form action="{% url 'post-delete' post.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="delete" value="Да, удалить" class="btn btn-danger">
+    <a href="{% url 'post-detail' post.pk %}" class="btn btn-default">Нет, отменить</a>
+  </form>
+{% endblock %}

@@ -8,7 +8,6 @@ class IndexView(generic.ListView):
     template_name = "blog/index.html"
     queryset = Post.objects.all()
     context_object_name = 'posts'
-    extra_context = {"title" : "Главная страница"}
 
 class PostCreateView(generic.CreateView):
     model = Post
@@ -25,7 +24,13 @@ class PostDetailView(generic.DetailView):
 #DELETE
 class PostDeleteView(generic.DeleteView):
     model = Post
+    template_name = "blog/post_delete.html"
     success_url = reverse_lazy('index-page')
+
+class PostDeleteConfirimView(generic.DeleteView):
+    model = Post
+    template_name = "blog/post_delete_confirm.html"
+
 
 #UPDATE
 class PostUpdateView(generic.UpdateView):
@@ -34,33 +39,8 @@ class PostUpdateView(generic.UpdateView):
     success_url = reverse_lazy("post-update")
     fields = ["title", "content"]
 
-# # def get_index(request):
-#     posts = Post.objects.all
-# #     context = {
-# #         "title" : "Главная страница",
-# #         "my_list" : [1, 2, 3, 4],
-#             'posts' : posts
-# #     }
-# #     return render(request, "blog/index.html", context=context)
-    
+class AboutView(generic.TemplateView):
+    template_name = "blog/about.html"
 
-def get_about(request):
-
-    return render(request, "blog/about.html", context= None)
-
-def get_contacts(request):
-
-    return render(request, "blog/contacts.html", context=None)
-
-# def get_post(request, pk):
-#     post = Post.objects.get(id=pk)
-#     context =  {
-#         "post" : post,
-#     }
-#     return render(request, "blog/post_detail.html", context)
-
-def post_create(request):
-    return render(request, 'blog/post_create.html', context=None)
-
-def post_update(request):
-    return render(request, 'blog/post_update.html', context=None)
+class ContactsView(generic.TemplateView):
+    template_name = "blog/contacts.html"

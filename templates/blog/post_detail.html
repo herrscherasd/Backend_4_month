@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block title %}
+Пост
+{% endblock %}
 {% block content %}
     <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -10,9 +13,9 @@
 </div>
     <br>
 
-    <form action="{% url 'post-delete' post.id %}" method="post">
+    <form action="{% url 'post-delete' post.pk%}" method="get">  
     {% csrf_token %}
-    <button type="submit">Удалить запись</button>
+    <a href="{% url 'post-delete-confirm' post.id %}"><button>Удалить пост</button></a>
     </form>
     <br>
 
