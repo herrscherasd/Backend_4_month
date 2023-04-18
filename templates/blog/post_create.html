@@ -6,10 +6,15 @@
 
     <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    
+        <label for="title">Введите название:</label><br>
+        <input type="text" name="title"><br>
+        <label for="content">Введите текст поста:</label><br>
+        <input type="text" name="content"><br><br>
+        <button type="submit">Опубликовать</button>
 
-    <button type="submit">Сохранить запись</button>
+
+
+    
 </form>
 
 {% endblock %}
