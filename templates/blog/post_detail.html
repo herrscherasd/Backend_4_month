@@ -12,8 +12,30 @@
   </div>
 </div>
     <br>
+    <form action = "" method = "post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Оставить комментарий">
+    </form>
+    <form action = "" method = "post">
+      {% csrf_token %}
+      <label for=username_input">Введите имя:</label><br>
+      <input type="text" name="username_input"><br>
+      
+      <label for="text">Введите комментарий:</label><br>
+      <input type="text" name="text"><br><br>
 
-    <form action="{% url 'post-delete' post.pk%}" method="get">  
+      <button type="submit">Оставить комментарий</button>
+      <hr>
+    </form>
+    {% for comment in post.post_comment.all %}
+      <h3>{{ comment.username }}</h3>
+      <h5>{{ comment.created }}</h5>
+      <p>{{ comment.text }}</p>
+      <hr>
+    {% endfor %}
+    <br>
+    <form action="{% url 'post-delete-confirm' post.pk%}" method="get">  
     {% csrf_token %}
     <a href="{% url 'post-delete-confirm' post.id %}"><button>Удалить пост</button></a>
     </form>
