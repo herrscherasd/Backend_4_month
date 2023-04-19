@@ -17,6 +17,19 @@
           </li>
   
         </ul>
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            {% if user.is_authenticated %}
+            <li class="nav-item"><span class="nav-link inactive">Пользователь: {{ user.get_username }}</span></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link active">Выход</a></li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}" class="nav-link active">Войти</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'register' %}" class="nav-link active">Зарегистрироваться</a>
+            </li>
+            {% endif %}
+          </ul>
       </div>
     </div>
   </nav>
