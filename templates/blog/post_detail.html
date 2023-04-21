@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-Пост
+{{ post.title }}
 {% endblock %}
 {% block content %}
     <div class="card" style="width: 18rem;">
@@ -12,11 +12,6 @@
   </div>
 </div>
     <br>
-    <form action = "" method = "post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Оставить комментарий">
-    </form>
     <form action = "" method = "post">
       {% csrf_token %}
       <label for=username_input">Введите имя:</label><br>
