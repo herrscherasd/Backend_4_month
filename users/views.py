@@ -28,5 +28,7 @@ class RegisterView(generic.FormView):
         new_user = form.save(commit=False)
         new_user.set_password(form.cleaned_data['password2'])
         new_user.save()
-        return super().form_vaild(form)
+        return super().form_valid(form)
     
+class RegisterDone(generic.TemplateView):
+    template_name = 'registration/register_done.html'
