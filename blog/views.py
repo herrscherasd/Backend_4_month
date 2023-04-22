@@ -1,9 +1,27 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from rest_framework import generics
+
 
 from blog.forms import CommentForm, PostForm
 from blog.models import Post, Comment
+from blog.serializers import PostSerializer
+
+class PostDetailAPIView(generics.RetrieveAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+    lookup_field = "pk"
+
+class PostCreateAPIView(generics.CreateAPIView):
+    serializer_class =PostSerializer
+    queryset = Post.objects.all()
+    
+
+class PostListAPIView(generics.ListAPIView):
+    queryset = Post.objects.filter(status=True)
+    serializer_class = PostSerializer
+
 
 class IndexView(generic.ListView):
     # model = Post 
